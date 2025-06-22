@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-nav">
+    <div class="container">
+      <h1 class="logo">
+        <img src="Assets/ritz.png" alt="rich" class="logo-img" />
+        Admin Prototype
+      </h1>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="settings.html">Settings</a>
+        <button id="logoutBtn" style="background:none; border:none; color:#cbd5e1; cursor:pointer; font-size:1.1rem; margin-left:1.5rem;">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <header>
+      <h1>Dashboard</h1>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Users</h3>
+        <p class="counter" data-target="150">0</p>
+      </div>
+      <div class="card">
+        <h3>Visits</h3>
+        <p class="counter" data-target="2300">0</p>
+      </div>
+      <div class="card">
+        <h3>Revenue</h3>
+        <p class="counter" data-target="5200">$0</p>
+      </div>
+    </section>
+
+    <section class="activity">
+      <h2>Recent Activity</h2>
+      <div class="activity-box">
+        <ul>
+          <li><span class="new-user">New user registered:</span> Ana Cruz</li>
+          <li><span class="settings-update">Settings updated</span></li>
+          <li><span class="user-deleted">User deleted:</span> John Reyes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="graph-section">
+      <h2>Monthly User Activity</h2>
+      <canvas id="userActivityChart" aria-label="User activity line chart" role="img"></canvas>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <h2>&copy; Gerald Dev</h2>
+    <p>All rights reserved</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', function () {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = 'login.html';
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem('isLoggedIn') !== 'true') {
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
+</body>
+</html>
